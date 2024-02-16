@@ -25,12 +25,12 @@ def generate_problems(username, ratings, num_problems):
 
     for rating in ratings:
         problems_for_rating = []
-        url = f"https://codeforces.com/api/problemset.problems?tags={rating}"
+        url = f"https://codeforces.com/api/problemset.problems?rating={rating}"
         response = requests.get(url)
 
         if response.status_code == 200:
             data = response.json()
-            print(data)
+            # print(data)
 
             if data['status'] == 'OK':
                 problems = data['result']['problems']
