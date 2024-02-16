@@ -1,4 +1,5 @@
 import requests
+import random
 
 def get_accepted_problems(username):
     url = f"https://codeforces.com/api/user.status?handle={username}&from=1&count=10000"
@@ -41,9 +42,9 @@ def generate_problems(username, ratings, num_problems):
 
                             if problem_code not in accepted_problems:  # Exclude already solved problems
                                 problems_for_rating.append(problem_code)
-                                
+
                 if problems_for_rating:
-                    generated_problems.extend(problems_for_rating[:min(num_problems, len(problems_for_rating))])
+                    generated_problems.append(random.choice(problems_for_rating))
                 else:
                     print(f"No unsolved problems found for rating {rating}.")
             else:
